@@ -1,4 +1,4 @@
-import { IBannerData } from "./interfaces"
+import { IBannerData } from "../../interfaces"
 
 export const BannerData: React.FC<IBannerData> = ({ banner, className}) => {
   return (

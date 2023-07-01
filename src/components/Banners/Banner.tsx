@@ -1,12 +1,12 @@
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import { bannersContent } from "../../constants"
-import { IBannerStates } from './interfaces';
+import { IBannerStates } from '../../interfaces';
 import useBannerSlider from '../../hooks/useBannerSlider';
 import { BannerData } from './BannerData';
 
 const Banner: React.FC<IBannerStates> = ({ bannerNumber, setBanner }) => {
   const { handleClick } = useBannerSlider(bannerNumber, setBanner);
-
+  
   return (
     <div className="relative banner h-[500px] group">
       {/* Banners */}

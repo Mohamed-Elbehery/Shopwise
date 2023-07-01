@@ -1,7 +1,9 @@
+//! Banner
 export interface IBanner {
   img: string,
-  sale?: string,
   title: string,
+  sale?: string,
+  order?: number,
 }
 
 export interface IBannerStates {

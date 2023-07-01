@@ -144,7 +144,7 @@ header .container {
 }
 
 .banner-content {
-  @apply absolute left-1/4 -translate-x-1/4 top-1/2 -translate-y-1/2 flex flex-col items-start;
+  @apply absolute left-[26%] -translate-x-[26%] top-1/2 -translate-y-1/2 flex flex-col items-start;
 }
 
 .banner-content p,
@@ -213,6 +213,70 @@ h1 {
 
 .nonactive-banner {
   @apply absolute transition-all duration-700 ease-in-out opacity-0;
+}
+
+.collections {
+  @apply container mt-24 flex items-center gap-8;
+}
+
+@media screen and (max-width: 1200px) {
+  .first-collection span {
+    @apply text-[18px];
+  }
+
+  .second-collection span {
+    @apply text-[22px];
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .second-collection {
+    @apply right-12;
+  }
+
+  .first-collection h1,
+  .second-collection h1 {
+    @apply text-[22px];
+  }
+
+  .second-collection span {
+    @apply text-[18px];
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .collections {
+    @apply flex flex-col items-center;
+  }
+
+  .first-collection,
+  .second-collection {
+    @apply left-1/2 -translate-x-0;
+  }
+}
+
+@media screen and (max-width: 408px) {
+  .first-collection,
+  .second-collection {
+    @apply w-full;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  .first-collection h1,
+  .second-collection h1 {
+    @apply text-[18px] font-extrabold;
+  }
+
+  .first-collection span,
+  .second-collection span {
+    @apply text-[14px];
+  }
+
+  .first-collection button,
+  .second-collection button {
+    @apply text-[14px];
+  }
 }
 /* Media Queries */
 @media screen and (max-width: 767px) {
