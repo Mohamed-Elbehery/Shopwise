@@ -1,3 +1,190 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); /*! Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"); /*! Roboto */
+
+/* Tailwind CSS Normalization */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Container */
+.container {
+  @apply w-full pr-[15px] pl-[15px] mr-auto ml-auto flex items-center justify-between;
+}
+
+@media (min-width: 576px) {
+  .container {
+    width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1140px;
+  }
+}
+
+/* Header */
+header .container {
+  @apply h-12;
+}
+
+.header_list {
+  @apply flex items-center gap-1 text-sm cursor-pointer;
+}
+
+.mobile-number {
+  @apply flex items-center gap-2 text-sm;
+}
+
+.nav-links {
+  @apply flex items-center gap-[5px] text-[15px] transition-colors duration-[275ms];
+}
+
+.nav-links:hover {
+  @apply text-primary;
+}
+
+.active {
+  @apply text-primary;
+}
+
+.mobile-navigation {
+  @apply hidden;
+}
+
+.bottom-header {
+  @apply flex items-center gap-4;
+}
+
+.main_nav-link {
+  @apply flex items-center gap-2 text-sm cursor-pointer uppercase transition-colors duration-[275ms] h-16;
+}
+
+.main_nav-link:hover {
+  @apply text-primary;
+}
+
+.menu-link {
+  @apply cursor-pointer transition-colors duration-[275ms];
+}
+
+.menu-link:hover {
+  @apply text-primary;
+}
+
+.cart-length {
+  @apply absolute top-4 -right-[8px] text-white bg-primary text-xs px-[5px] rounded-full;
+}
+
+.menu-hidden {
+  @apply absolute text-black bg-white w-56 -right-36 top-24 border border-t-0 p-2 px-4 space-y-4 text-sm capitalize font-normal opacity-0 
+  transition-all duration-500 ease-out pointer-events-none;
+}
+
+.menu-displayed {
+  @apply absolute text-black bg-white w-56 -right-36 top-16 border border-t-0 p-2 px-4 space-y-4 text-sm capitalize font-normal shadow-2xl 
+  drop-shadow-2xl opacity-100 transition-all duration-500 ease-out;
+}
+
+.category-hidden li:first-child,
+.category-displayed li:first-child {
+  @apply border-0 p-0;
+}
+
+.category-hidden {
+  @apply absolute bg-white text-black w-full border border-t-0 left-0 top-[100px] pointer-events-none flex p-3 px-5 font-normal transition-all duration-500 
+  ease-out opacity-0 cursor-default flex-wrap;
+}
+
+.category-displayed {
+  @apply absolute bg-white text-black w-full border border-t-0 left-0 top-[98%] flex py-4 px-5 font-normal transition-all duration-500 ease-out opacity-100 cursor-default flex-wrap;
+}
+
+.category-banner-content {
+  @apply absolute left-1/2 top-1/2 -translate-y-1/2 space-y-2;
+}
+
+.category-menu-btn {
+  @apply text-base capitalize cursor-pointer hover:text-primary transition duration-300 after:content-[""] after:absolute after:left-0 after:-bottom-1 
+  after:bg-gray-800 after:h-[1px] after:w-[50%] after:transition-all after:duration-500 after:ease-out;
+}
+
+.category-menu-btn:hover {
+  @apply after:w-full;
+}
+
+.shop-img {
+  @apply filter w-1/4 relative after:absolute after:content-[''] after:left-6 after:right-[13px] after:top-0 after:bottom-11 after:bg-opacity-60 after:bg-black;
+}
+
+.shop-img img {
+  @apply w-[95%];
+}
+
+.shop-btn {
+  @apply relative text-sm text-black bg-transparent p-6 py-2 uppercase border border-white transition-all duration-500 ease-out hover:after:right-full hover:before:left-full 
+  hover:text-white hover:bg-transparent after:content-[""] after:absolute after:left-0 after:right-1/2 after:inset-y-0 after:bg-white after:-z-10 after:transition-all 
+  after:duration-500 after:ease-out before:content-[""] before:absolute before:left-1/2 before:right-0 before:inset-y-0 before:bg-white before:-z-10 before:transition-all 
+  before:duration-500 before:ease-out;
+}
+
+/* Media Queries */
+@media screen and (max-width: 767px) {
+  header .container {
+    @apply flex-col gap-2 justify-center h-[74px];
+  }
+
+  header .bottom-container {
+    @apply flex-row justify-between;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .bottom-header {
+    @apply hidden;
+  }
+
+  .mobile-navigation {
+    @apply flex items-center gap-5;
+  }
+}
+
+@media screen and (max-width: 327px) {
+  .nav-links {
+    font-size: 13px;
+  }
+
+  .mobile-number {
+    font-size: 12px;
+  }
+
+  .header_list {
+    font-size: 12px;
+  }
+
+  .main_nav-link {
+    font-size: 13px;
+  }
+
+  .main_nav-link svg {
+    @apply w-5 h-5;
+  }
+
+  .mobile-icon svg {
+    @apply w-5 h-5;
+  }
+
+  .mobile-number svg {
+    display: none;
+  }
+}

@@ -2,7 +2,21 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#FF324D",
+        secondary: "#fa324d33",
+        secondary_dark: "#292b2c",
+        secondary_light: "#343a40",
+        black: "#202325",
+        green: "#388e3c",
+        gold: "#F6BC3E",
+      },
+      fontFamily: {
+        poppins: ["Poppins", "Roboto", "Arial", "Helvetica"],
+        roboto: ["Roboto", "Poppins", "Arial", "Helvetica"],
+      },
+    },
   },
   plugins: [],
 };
