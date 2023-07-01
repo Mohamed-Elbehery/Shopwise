@@ -1,6 +1,6 @@
 /* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); /*! Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"); /*! Roboto */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"); /*! Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"); /*! Roboto */
 
 /* Tailwind CSS Normalization */
 @tailwind base;
@@ -88,12 +88,12 @@ header .container {
 
 .menu-hidden {
   @apply absolute text-black bg-white w-56 -right-36 top-24 border border-t-0 p-2 px-4 space-y-4 text-sm capitalize font-normal opacity-0 
-  transition-all duration-500 ease-out pointer-events-none;
+  transition-all duration-500 ease-out pointer-events-none z-[999];
 }
 
 .menu-displayed {
   @apply absolute text-black bg-white w-56 -right-36 top-16 border border-t-0 p-2 px-4 space-y-4 text-sm capitalize font-normal shadow-2xl 
-  drop-shadow-2xl opacity-100 transition-all duration-500 ease-out;
+  drop-shadow-2xl opacity-100 transition-all duration-500 ease-out z-[999];
 }
 
 .category-hidden li:first-child,
@@ -103,11 +103,11 @@ header .container {
 
 .category-hidden {
   @apply absolute bg-white text-black w-full border border-t-0 left-0 top-[100px] pointer-events-none flex p-3 px-5 font-normal transition-all duration-500 
-  ease-out opacity-0 cursor-default flex-wrap;
+  ease-out opacity-0 cursor-default flex-wrap z-[999];
 }
 
 .category-displayed {
-  @apply absolute bg-white text-black w-full border border-t-0 left-0 top-[98%] flex py-4 px-5 font-normal transition-all duration-500 ease-out opacity-100 cursor-default flex-wrap;
+  @apply absolute bg-white text-black w-full border border-t-0 left-0 top-[98%] flex py-4 pb-3 px-4 font-normal transition-all duration-500 ease-out opacity-100 cursor-default flex-wrap z-[999];
 }
 
 .category-banner-content {
@@ -131,13 +131,89 @@ header .container {
   @apply w-[95%];
 }
 
-.shop-btn {
+.shop-btn,
+.main-btn {
   @apply relative text-sm text-black bg-transparent p-6 py-2 uppercase border border-white transition-all duration-500 ease-out hover:after:right-full hover:before:left-full 
-  hover:text-white hover:bg-transparent after:content-[""] after:absolute after:left-0 after:right-1/2 after:inset-y-0 after:bg-white after:-z-10 after:transition-all 
+  hover:text-white hover:bg-transparent after:content-[""] after:absolute after:left-0 after:right-[49%] after:inset-y-0 after:bg-white after:-z-10 after:transition-all 
   after:duration-500 after:ease-out before:content-[""] before:absolute before:left-1/2 before:right-0 before:inset-y-0 before:bg-white before:-z-10 before:transition-all 
   before:duration-500 before:ease-out;
 }
 
+.main-btn {
+  @apply border-primary after:bg-primary before:bg-primary text-white hover:text-primary text-base p-8 py-3 font-poppins;
+}
+
+.banner-content {
+  @apply absolute left-1/4 -translate-x-1/4 top-1/2 -translate-y-1/2 flex flex-col items-start;
+}
+
+.banner-content p,
+h1 {
+  @apply font-roboto;
+}
+
+.banner-content p {
+  @apply text-xl font-light text-secondary_light;
+}
+
+.banner-content h1 {
+  @apply font-bold text-secondary_dark text-6xl mb-7 mt-4;
+}
+
+.banner-content button {
+  @apply main-btn;
+}
+
+.banner-img,
+.banner {
+  @apply w-full h-[500px] object-cover;
+}
+
+@media screen and (max-width: 1200px) {
+  .banner-img,
+  .banner {
+    @apply h-[400px];
+  }
+
+  .banner-content h1 {
+    @apply text-5xl;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .banner-img,
+  .banner {
+    @apply h-[350px];
+  }
+
+  .banner-content h1 {
+    @apply text-[44px];
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .banner-content p {
+    @apply text-[18px];
+  }
+
+  .banner-content h1 {
+    @apply text-[36px];
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .banner-content {
+    @apply w-full items-center text-center;
+  }
+}
+
+.active-banner {
+  @apply absolute transition-all duration-700 ease-in-out opacity-100 z-[10];
+}
+
+.nonactive-banner {
+  @apply absolute transition-all duration-700 ease-in-out opacity-0;
+}
 /* Media Queries */
 @media screen and (max-width: 767px) {
   header .container {
@@ -155,7 +231,7 @@ header .container {
   }
 
   .mobile-navigation {
-    @apply flex items-center gap-5;
+    @apply flex items-center gap-5 z-[999];
   }
 }
 

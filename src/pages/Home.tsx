@@ -1,8 +1,10 @@
+import { Banners } from "../components/";
+
 const Home: React.FC = () => {
   return (
-    <div className="bg-black h-[50vh]">
-      Home
-    </div>
+    <main className="-z-10">
+      <Banners />
+    </main>
   )
 }
 

@@ -17,7 +17,8 @@ const LeftSide: React.FC = () => {
   return (
     <ul className='flex items-center gap-4'>
       {/* Language */}
-      <li className='header_list relative pl-3' onClick={() => setIsLangMenuHidden(!isLangMenuHidden)} >
+      <li onClick={() => setIsLangMenuHidden(!isLangMenuHidden)} >
+        <button className='header_list relative pl-3'>
         {language}
         {isLangMenuHidden && <ul className='absolute -left-2 bottom-[-120px] bg-white w-36 border z-40'>
           <li className='header_list p-2' onClick={() => setLanguage(<>
@@ -42,16 +43,19 @@ const LeftSide: React.FC = () => {
             United States
           </li>
         </ul>}
+        </button>
       </li>
 
       {/* Currency */}
-      <li className='header_list relative' onClick={() => setIsCurrencyMenuHidden(!isCurrencyMenuHidden)}>
-        {currency} <GoChevronDown className="text-secondary_light" />
-        {isCurrencyMenuHidden && <ul className='absolute bg-white w-12 h-28 -left-[10px] -bottom-[122px] z-50 border border-gray flex items-center justify-center flex-col gap-3'>
-          <li onClick={() => setCurrency("USD")}>USD</li>
-          <li onClick={() => setCurrency("EUR")}>EUR</li>
-          <li onClick={() => setCurrency("GBP")}>GBP</li>
-        </ul>}
+      <li onClick={() => setIsCurrencyMenuHidden(!isCurrencyMenuHidden)}>
+        <button className='header_list relative'>
+          {currency} <GoChevronDown className="text-secondary_light" />
+          {isCurrencyMenuHidden && <ul className='absolute bg-white w-12 h-28 -left-[10px] -bottom-[122px] z-50 border border-gray flex items-center justify-center flex-col gap-3'>
+            <li onClick={() => setCurrency("USD")}>USD</li>
+            <li onClick={() => setCurrency("EUR")}>EUR</li>
+            <li onClick={() => setCurrency("GBP")}>GBP</li>
+          </ul>}
+        </button>
       </li>
 
       {/* Mobile Number */}

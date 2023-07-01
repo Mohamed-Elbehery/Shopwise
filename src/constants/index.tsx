@@ -7,9 +7,12 @@ import us from '../assets/us.png';
 import menu_banner1 from '../assets/menu_banner1.jpg'
 import menu_banner2 from '../assets/menu_banner2.jpg'
 import menu_banner3 from '../assets/menu_banner3.jpg'
+import banner1 from '../assets/banner1.jpg'
+import banner2 from '../assets/banner2.jpg'
+import banner3 from '../assets/banner3.jpg'
 import shop_banner from '../assets/shop_banner.jpg';
 
-export { logo_dark, logo_light, eng, fn , us, menu_banner1, menu_banner2, menu_banner3, shop_banner };
+export { logo_dark, logo_light, eng, fn , us, menu_banner1, menu_banner2, menu_banner3, shop_banner, banner1, banner2, banner3 };
 
 //! Fixed Data
 export const categories = [
@@ -44,4 +47,21 @@ export const shopLayout = [
     title: "Product Pages",
     layouts: ["Default", "Left Sidebar", "Right Sidebar", "Thumbnails Left"]
   },
+]
+
+export const bannersContent = [
+  {
+    img: banner1,
+    title: "Woman Fashion",
+  },
+  {
+    img: banner2,
+    sale: "50% off in all products",
+    title: "Man Fashion"
+  },
+  {
+    img: banner3,
+    sale: "Taking your Viewing Experience to Next Level",
+    title: "Summer Sale"
+  }
 ]
