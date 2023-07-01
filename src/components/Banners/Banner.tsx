@@ -1,36 +1,20 @@
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import { bannersContent } from "../../constants"
-import { IBanner, IBannerStates } from './interfaces';
+import { IBannerStates } from './interfaces';
+import useBannerSlider from '../../hooks/useBannerSlider';
+import { BannerData } from './BannerData';
 
 const Banner: React.FC<IBannerStates> = ({ bannerNumber, setBanner }) => {
-  const handleClick = (process: string) => {
-    if (process == "+") {
-      if(bannerNumber == 2) setBanner(() => 0);
-      else setBanner((prevNum) => prevNum + 1);
-    } else {
-      if(bannerNumber == 0) setBanner(() => 2)
-      else setBanner((prevNum) => prevNum - 1)
-    }
-  };
-
-  const bannerData = (banner: IBanner, className: string, key: number) =>
-  <div className={className} key={key}>
-    <img src={banner.img} alt={`${banner.title} banner`} className='banner-img' />
-    <div className="banner-content">
-      <p>{banner.sale}&nbsp;</p>
-      <h1>{banner.title}</h1>
-      <button>Shop Now</button>
-    </div>
-  </div>
+  const { handleClick } = useBannerSlider(bannerNumber, setBanner);
 
   return (
     <div className="relative banner h-[500px] group">
       {/* Banners */}
       {bannersContent.map((banner, index) => {
         if(index == bannerNumber) {
-        return ( bannerData(banner, "active-banner", index) )
+        return ( <BannerData banner={banner} className="active-banner" key={index} />  )
         } else {
-          return ( bannerData(banner, "nonactive-banner", index) )
+          return ( <BannerData banner={banner} className="nonactive-banner" key={index} /> )
       }
       })}
       {/* Arrows */}
