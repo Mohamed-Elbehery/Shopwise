@@ -8,6 +8,7 @@ export default {
         secondary: "#fa324d33",
         secondary_dark: "#292b2c",
         secondary_light: "#343a40",
+        grey: "#687188",
         black: "#202325",
         green: "#388e3c",
         gold: "#F6BC3E",
@@ -18,5 +19,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

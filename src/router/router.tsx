@@ -1,9 +1,9 @@
 import App from "../App"
 import { createBrowserRouter } from "react-router-dom"
 import { Home, Notfound } from "../pages"
-import {Suspense} from 'react'
+import { Suspense } from 'react'
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
@@ -19,5 +19,3 @@ const router = createBrowserRouter([
     ]
   }
 ])
-
-export default router
