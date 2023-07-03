@@ -1,4 +1,4 @@
-import { Banners, Collections, Products } from "../components/";
+import { Banners, Collections, FeaturedProducts, Products, SummerCollection } from "../components/";
 
 const Home: React.FC = () => {
   return (
@@ -6,6 +6,8 @@ const Home: React.FC = () => {
       <Banners />
       <Collections />
       <Products />
+      <SummerCollection />
+      <FeaturedProducts />
     </main>
   )
 }

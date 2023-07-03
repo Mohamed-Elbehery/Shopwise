@@ -8,7 +8,7 @@ export const BannerData: React.FC<IBannerData> = ({ banner, className}) => {
         <div className="banner-content">
           <p>{banner.sale}&nbsp;</p>
           <h1>{banner.title}</h1>
-          <button>Shop Now</button>
+          <button className="main-btn uppercase">Shop Now</button>
         </div>
       </div>
     </div>
