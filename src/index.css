@@ -284,7 +284,7 @@ h1 {
 }
 
 .products button.active {
-  @apply text-primary underline;
+  @apply text-primary;
 }
 
 @media screen and (max-width: 1279px) {
@@ -446,6 +446,17 @@ h1 {
 @media screen and (max-width: 300px) {
   .summer_collection-content h1 {
     @apply text-[20px];
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .products {
+    @apply overflow-hidden;
+  }
+
+  .slick-prev,
+  .slick-next {
+    @apply hidden;
   }
 }
 /* Media Queries */
