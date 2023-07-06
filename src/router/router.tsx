@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Suspense fallback={<h1 className="text-primary font-bold text-3xl">Loading...</h1>}> <Home /> </Suspense>
+        element: <Suspense fallback={<h1 className="text-primary font-bold text-3xl">Loading...</h1>}> <Home /> </Suspense>,
       },  
       {
         path: "*",

@@ -1,13 +1,13 @@
-/* Fonts */
+/** Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"); /*! Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"); /*! Roboto */
 
-/* Tailwind CSS Normalization */
+/** Tailwind CSS Normalization */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Container */
+/** Container */
 .container {
   @apply w-full pr-[15px] pl-[15px] mr-auto ml-auto flex items-center justify-between;
 }
@@ -37,7 +37,7 @@
   }
 }
 
-/* Header */
+/*! Header */
 header .container {
   @apply h-12;
 }
@@ -147,6 +147,7 @@ header .container {
   @apply border-primary after:bg-primary before:bg-primary text-white hover:text-primary text-base p-8 py-3 font-poppins z-50;
 }
 
+/*! Banners */
 .banner-content {
   @apply flex flex-col items-start;
 }
@@ -215,6 +216,7 @@ h1 {
   @apply absolute transition-all duration-700 ease-in-out opacity-0;
 }
 
+/*! Collections */
 .collections {
   @apply container mt-24 flex items-center gap-8;
 }
@@ -279,6 +281,7 @@ h1 {
   }
 }
 
+/*! Products */
 .products li {
   @apply text-base text-secondary_dark hover:text-primary hover:underline transition duration-300 cursor-pointer;
 }
@@ -365,6 +368,7 @@ h1 {
   }
 }
 
+/*! Summer Collection */
 .summer-collection {
   @apply grid grid-cols-2;
 }
@@ -449,17 +453,154 @@ h1 {
   }
 }
 
+/*! Featured Products */
 @media screen and (max-width: 576px) {
   .products {
     @apply overflow-hidden;
   }
 
-  .slick-prev,
-  .slick-next {
+  .slick-arrow {
+    display: none !important;
+  }
+}
+
+/*! Testimonials */
+.testimonials-container {
+  @apply grid grid-cols-1;
+}
+
+@media screen and (max-width: 1200px) {
+  .testimonials-container h1 {
+    @apply text-[30px];
+  }
+
+  .testimonial p {
+    @apply w-[75%];
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .testimonials-container h1 {
+    @apply text-[28px];
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .testimonials-container h1 {
+    @apply text-[22px];
+  }
+
+  .testimonial p,
+  .testimonial span {
+    @apply text-[14px];
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .testimonials-container {
+    @apply overflow-hidden;
+  }
+
+  .slick-arrow {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .testimonial p {
+    @apply w-[100%];
+  }
+}
+
+/*! Services */
+.service svg {
+  @apply w-9 h-9 text-grey;
+}
+
+.service:nth-child(1),
+.service:nth-child(2) {
+  @apply relative after:content-[''] after:absolute after:-right-2 after:top-[15%] after:bottom-[15%] after:bg-[#ddd] after:w-[1px] after:h-[65%];
+}
+
+@media screen and (max-width: 1200px) {
+  .service h1 {
+    @apply text-[18px];
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .services-container {
+    @apply flex-col gap-8;
+  }
+
+  .service::after {
     @apply hidden;
   }
 }
-/* Media Queries */
+
+@media screen and (max-width: 480px) {
+  .service {
+    @apply p-0;
+  }
+
+  .service h1 {
+    @apply text-base;
+  }
+
+  .service span {
+    @apply text-[14px];
+  }
+}
+
+/*! Newsletter */
+@media screen and (max-width: 1200px) {
+  .newsletter h1 {
+    @apply text-[26px];
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .newsletter .container {
+    @apply flex-col gap-3 items-start;
+  }
+
+  .newsletter .container form {
+    @apply w-full;
+  }
+
+  .newsletter h1 {
+    @apply text-[24px];
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .newsletter {
+    @apply py-4;
+  }
+
+  .newsletter form button,
+  .newsletter form input {
+    @apply py-[10px];
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .newsletter h1 {
+    @apply text-[20px];
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .newsletter form button {
+    @apply text-[14px] px-4;
+  }
+
+  .newsletter form input {
+    @apply pr-8;
+  }
+}
+
+/*! Media Queries */
 @media screen and (max-width: 767px) {
   header .container {
     @apply flex-col gap-2 justify-center h-[74px];

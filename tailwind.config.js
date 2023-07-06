@@ -12,6 +12,7 @@ export default {
         black: "#202325",
         green: "#388e3c",
         gold: "#F6BC3E",
+        testimonials: "#FFF1F1",
       },
       fontFamily: {
         poppins: ["Poppins", "Roboto", "Arial", "Helvetica"],
@@ -19,5 +20,5 @@ export default {
       },
     },
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [],
 };

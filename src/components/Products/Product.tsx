@@ -2,11 +2,11 @@ import { IProduct } from "../../interfaces"
 import { AiFillStar } from 'react-icons/ai'
 import { PiShoppingCart, PiShuffleAngular, PiMagnifyingGlassPlus, PiHeartStraight } from 'react-icons/pi'
 
-const Product: React.FC<IProduct> = ({ title, price, image, rating }) => {
+const Product: React.FC<IProduct> = ({ title, price, image, rating, className }) => {
   const icons = [PiShoppingCart, PiShuffleAngular, PiMagnifyingGlassPlus, PiHeartStraight];
 
   return (
-    <div className="product relative group w-[255px] shadow-md shadow-gray-300 rounded-lg">
+    <div className={`product relative group w-[255px] shadow-md shadow-gray-300 rounded-lg ${className}`}>
       {/* Image */}
       <div className="relative group-hover:after:bg-opacity-30 after:rounded-t-lg after:absolute after:inset-0 after:bg-black after:bg-opacity-0 after:transition-all after:duration-500 after:ease-out">
         <img className="w-full h-[285px] object-contain" src={image} alt={`${title}-img`} />

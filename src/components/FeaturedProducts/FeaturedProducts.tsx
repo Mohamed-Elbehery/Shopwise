@@ -4,27 +4,17 @@ import Product from "../Products/Product";
 import "./slick.css"; 
 import "./slick-theme.css";
 import Slider from "react-slick";
-import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
-
-function PreviousArrow({className, style, onClick}: any) {
-  return (
-    <GoChevronLeft className={`${className} block w-8 h-8 text-black hover:text-secondary_light`} style={style} onClick={onClick} />
-  )
-}
-
-function NextArrow({className, style, onClick}: any) {
-  return (
-    <GoChevronRight className={`${className} block w-8 h-8 text-black hover:text-secondary_light`} style={style} onClick={onClick} />
-  )
-}
+import useSliderArrows from "../../hooks/useSliderArrows";
 
 const FeaturedProducts: React.FC = () => {
-  const { data } = useGetAllProductsQuery('products');
+  const { data, isFetching } = useGetAllProductsQuery('products');
+
+  const {NextArrow, PreviousArrow} = useSliderArrows();
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 300,
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
@@ -63,15 +53,16 @@ const FeaturedProducts: React.FC = () => {
   };
 
   return (
-    <div className="products container flex flex-col mb-10">
+    <section className="products container flex flex-col mb-10">
       <h1 className="mx-auto font-bold text-[32px] text-secondary_dark">Featured Products</h1>
         <div className="products-container mt-12">
-          <Slider {...settings}>
-            {data?.filter((product) => product.category.includes('men') || product.category.includes('women') ).filter((_, index) => index < 4).map((product) => <Product key={product?.id} {...product} />)}
-            {data?.filter((product) => product.category.includes('men') || product.category.includes('women') ).filter((_, index) => index < 4).map((product) => <Product key={product?.id+1} {...product} />)}
-          </Slider>
+        {isFetching ? <p>Loading...</p> : 
+        <Slider {...settings}>
+          {data?.filter((product) => product.category.includes('men') || product.category.includes('women') ).filter((_, index) => index < 4).map((product) => <Product className="cursor-grab" key={product?.id} {...product} />)}
+          {data?.filter((product) => product.category.includes('men') || product.category.includes('women') ).filter((_, index) => index < 4).map((product) => <Product className="cursor-grab" key={product?.id+1} {...product} />)}
+        </Slider>}
         </div>
-    </div>
+    </section>
   )
 }
 

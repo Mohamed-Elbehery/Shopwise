@@ -2,7 +2,7 @@ import { tranding_img } from "../../constants"
 
 const SummerCollection: React.FC = () => {
   return (
-    <div className="bg-[#F4F9FC] my-28">
+    <section className="bg-[#F4F9FC] my-28">
       <div className="summer-collection container">
         <img src={tranding_img} className="-mt-10 h-[460px] w-[420px]" alt="tranding-img" />
         <div className="summer_collection-content">
@@ -12,7 +12,7 @@ const SummerCollection: React.FC = () => {
           <button className="main-btn text-base block mt-6">Shop Now</button>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

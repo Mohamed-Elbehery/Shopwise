@@ -5,9 +5,9 @@ const Banners: React.FC = () => {
   const [banner, setBanner] = useState<number>(0);
 
   return (
-    <>
+    <section>
       <Banner bannerNumber={banner} setBanner={setBanner} />
-    </>
+    </section>
   )
 }
 
