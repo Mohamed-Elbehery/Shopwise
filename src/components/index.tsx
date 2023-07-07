@@ -8,3 +8,4 @@ export { default as Testimonials } from './Testimonials/Testimonials';
 export { default as Services } from './Services/Services';
 export { default as Newsletter } from './Newsletter/Newsletter';
 export { default as Footer } from './Footer/Footer';
+export { default as Location } from './Location/Location';

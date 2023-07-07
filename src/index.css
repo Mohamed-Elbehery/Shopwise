@@ -637,6 +637,36 @@ h1 {
   }
 }
 
+/*! Login Form */
+@media screen and (max-width: 480px) {
+  .login-form-container {
+    @apply h-auto;
+  }
+
+  .login-form > div:has(input) {
+    @apply flex-col items-start gap-2 h-auto;
+  }
+
+  .login-form div:last-child {
+    @apply flex-col items-start gap-3;
+  }
+
+  .hr::before,
+  .hr::after {
+    width: 40% !important;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .login-methods {
+    @apply flex-col gap-0;
+  }
+
+  .login-methods button {
+    @apply w-[142px];
+  }
+}
+
 /*! Media Queries */
 @media screen and (max-width: 767px) {
   header .container {

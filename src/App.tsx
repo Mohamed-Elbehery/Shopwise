@@ -1,4 +1,4 @@
-import { Header } from "./components"
+import { Footer, Header, Newsletter } from "./components"
 import { Outlet } from 'react-router-dom'
 
 function App() {
@@ -6,6 +6,8 @@ function App() {
     <>
       <Header />
       <Outlet />
+      <Newsletter />
+      <Footer />
     </>
   )
 }
