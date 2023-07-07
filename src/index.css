@@ -639,15 +639,15 @@ h1 {
 
 /*! Login Form */
 @media screen and (max-width: 480px) {
-  .login-form-container {
+  .form-container {
     @apply h-auto;
   }
 
-  .login-form > div:has(input) {
+  form .check-container {
     @apply flex-col items-start gap-2 h-auto;
   }
 
-  .login-form div:last-child {
+  form .form-nav {
     @apply flex-col items-start gap-3;
   }
 

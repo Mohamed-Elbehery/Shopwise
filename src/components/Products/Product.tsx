@@ -1,8 +1,9 @@
 import { IProduct } from "../../interfaces"
 import { AiFillStar } from 'react-icons/ai'
 import { PiShoppingCart, PiShuffleAngular, PiMagnifyingGlassPlus, PiHeartStraight } from 'react-icons/pi'
+import { Link } from "react-router-dom";
 
-const Product: React.FC<IProduct> = ({ title, price, image, rating, className }) => {
+const Product: React.FC<IProduct> = ({ title, price, image, rating, className, id }) => {
   const icons = [PiShoppingCart, PiShuffleAngular, PiMagnifyingGlassPlus, PiHeartStraight];
 
   return (
@@ -19,7 +20,7 @@ const Product: React.FC<IProduct> = ({ title, price, image, rating, className })
       </div>
       <div className="p-3 pr-0">
         {/* Title */}
-        <p className="font-roboto font-bold text-base line-clamp-1 text-secondary_light">{title}</p>
+        <Link to={`${id}`} className="font-roboto font-bold text-base line-clamp-1 text-secondary_light cursor-pointer hover:text-primary transition duration-300">{title}</Link>
         {/* Price */}
         <div className="space-x-2">
           <span className="text-primary text-base font-poppins font-bold">${price}</span>

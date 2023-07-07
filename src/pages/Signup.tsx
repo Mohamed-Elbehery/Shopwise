@@ -1,10 +1,10 @@
-import { Location } from "../components"
+import { Form, Location } from "../components"
 
 const Signup: React.FC = () => {
   return (
     <div>
       <Location />
-      Register
+      <Form type={"register"} />
     </div>
   )
 }
