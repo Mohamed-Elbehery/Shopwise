@@ -7,3 +7,4 @@ export { default as FeaturedProducts } from './FeaturedProducts/FeaturedProducts
 export { default as Testimonials } from './Testimonials/Testimonials';
 export { default as Services } from './Services/Services';
 export { default as Newsletter } from './Newsletter/Newsletter';
+export { default as Footer } from './Footer/Footer';

@@ -23,10 +23,40 @@ import user_img1 from '../assets//clients/user_img1.jpg';
 import user_img2 from '../assets//clients/user_img2.jpg';
 import user_img3 from '../assets//clients/user_img3.jpg';
 import user_img4 from '../assets//clients/user_img4.jpg';
+import visa from '../assets/payment_methods/visa.png';
+import discover from '../assets/payment_methods/discover.png';
+import master_card from '../assets/payment_methods/master_card.png';
+import paypal from '../assets/payment_methods/paypal.png';
+import american_express from '../assets/payment_methods/american_express.png';
 
-export { logo_dark, logo_light, eng, fn , us, menu_banner1, menu_banner2, menu_banner3, shop_banner, banner1, banner2, banner3, shop_banner_img1, shop_banner_img2, tranding_img, user_img1, user_img2, user_img3, user_img4 };
+export { logo_dark, logo_light, eng, fn , us, menu_banner1, menu_banner2, menu_banner3, shop_banner,
+  banner1, banner2, banner3, shop_banner_img1, shop_banner_img2, tranding_img, user_img1, user_img2, user_img3, user_img4,
+  visa, discover, master_card, paypal, american_express,
+};
 
 //! Fixed Data
+export const home_blog_Links = ["Fashion 1", "Fashion 2", "Furniture 1", "Furniture 2", "Electronics 1", "Electronics 2"];
+
+export const pagesLinks = ["About Us", "Contact Us", "Faq", "404 Error Page", "Login", "Register", "Terms And Conditions"];
+
+export const productsLinks = [
+  {
+    sale: "10% Off",
+    title: "New Arrival",
+    img: menu_banner1
+  },
+  {
+    sale: "15% Off",
+    title: "Men's Fashion",
+    img: menu_banner2
+  },
+  {
+    sale: "23% Off",
+    title: "Kid's Fashion",
+    img: menu_banner3
+  }
+];
+
 export const categories = [
   {
     title: "Woman's",
@@ -135,3 +165,6 @@ export const services = [
     description: "If you are going to use of Lorem, you need to be sure there anything"
   }
 ]
+export const usefulLinks = ["About Us", "FAQ", "Location", "Affiliates", "Contact"];
+export const categoryLinks = ["Men", "Women", "Kids", "Best Seller", "New Arrivals"];
+export const myAccountLinks = ["My Account", "Discount", "Returns", "Orders History", "Order Tracking"];

@@ -12,11 +12,14 @@ const Testimonials: React.FC = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 350,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PreviousArrow />,
+    cssEase: "ease"
   }
 
   return (

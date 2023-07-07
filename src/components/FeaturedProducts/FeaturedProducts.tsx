@@ -14,11 +14,14 @@ const FeaturedProducts: React.FC = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 300,
+    autoplay: true,
+    speed: 750,
+    autoplaySpeed: 6000,
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PreviousArrow />,
+    cssEase: "ease",
     responsive: [
       {
         breakpoint: 1200,

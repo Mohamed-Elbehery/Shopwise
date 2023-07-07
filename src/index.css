@@ -9,7 +9,7 @@
 
 /** Container */
 .container {
-  @apply w-full pr-[15px] pl-[15px] mr-auto ml-auto flex items-center justify-between;
+  @apply w-full px-[15px] mr-auto ml-auto flex items-center justify-between;
 }
 
 .products-container {
@@ -115,7 +115,7 @@ header .container {
 }
 
 .category-banner-content {
-  @apply absolute left-1/2 top-1/2 -translate-y-1/2 space-y-2;
+  @apply absolute right-[15px] top-1/2 -translate-y-1/2 space-y-2 z-[999];
 }
 
 .category-menu-btn {
@@ -128,11 +128,11 @@ header .container {
 }
 
 .shop-img {
-  @apply filter w-1/4 relative after:absolute after:content-[''] after:left-6 after:right-[13px] after:top-0 after:bottom-11 after:bg-opacity-60 after:bg-black;
+  @apply filter w-1/4 relative after:absolute after:content-[''] after:left-6 after:right-[13px] after:top-0 after:bottom-0;
 }
 
-.shop-img img {
-  @apply w-[95%];
+.shop-img div:has(img) {
+  @apply filter relative after:absolute after:content-[''] after:left-0 after:right-0 after:top-0 after:bottom-0 after:bg-opacity-60 after:bg-black;
 }
 
 .shop-btn,
@@ -597,6 +597,43 @@ h1 {
 
   .newsletter form input {
     @apply pr-8;
+  }
+}
+
+/*! Footer */
+.top-footer {
+  @apply px-0;
+}
+
+@media screen and (max-width: 1023px) {
+  .top-footer {
+    @apply flex-wrap justify-between;
+  }
+
+  .contact {
+    @apply mr-[136px];
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .top-footer {
+    @apply flex-wrap justify-between px-[15px];
+  }
+
+  .top-footer ul:has(img) {
+    @apply w-full;
+  }
+
+  .contact {
+    @apply mr-0;
+  }
+
+  .bottom-footer {
+    @apply flex-col gap-6;
+  }
+
+  .bottom-footer span {
+    @apply text-center;
   }
 }
 
