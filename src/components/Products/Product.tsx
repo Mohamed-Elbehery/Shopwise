@@ -22,7 +22,7 @@ const Product: React.FC<IProduct> = ({ title, price, image, rating, className, i
             if(Icon == PiShoppingCart) return (
               <button key={index}>
                 <Icon onClick={() => {
-                  if(JSON.parse(localStorage.getItem('user')).isLoggedIn) {
+                  if(JSON.parse(localStorage.getItem('user'))?.isLoggedIn) {
                     dispatch(addToCart(data));
                     dispatch(getTotal());
                   } else {
@@ -44,7 +44,7 @@ const Product: React.FC<IProduct> = ({ title, price, image, rating, className, i
       </div>
       <div className="p-3 pr-0">
         {/* Title */}
-        <p onClick={() => {!JSON.parse(localStorage.getItem('user')).isLoggedIn ? navigate(`/signup`) : navigate(`/${id}`)}} className="font-roboto font-bold text-base line-clamp-1 text-secondary_light cursor-pointer hover:text-primary transition duration-300">{title}</p>
+        <p onClick={() => {!JSON.parse(localStorage.getItem('user'))?.isLoggedIn ? navigate(`/signup`) : navigate(`/${id}`)}} className="font-roboto font-bold text-base line-clamp-1 text-secondary_light cursor-pointer hover:text-primary transition duration-300">{title}</p>
         {/* Price */}
         <div className="space-x-2">
           <span className="text-primary text-base font-poppins font-bold">${price}</span>
