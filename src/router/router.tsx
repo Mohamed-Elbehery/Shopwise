@@ -1,8 +1,8 @@
 import App from "../App"
 import { createBrowserRouter } from "react-router-dom"
-import { Home, Login, Notfound, Signup } from "../pages"
+import { Compare, Contact, Home, Login, Notfound, ProductDetails, Signup, Wishlist } from "../pages"
 import { Suspense } from 'react'
-import SignleProduct from "../pages/SignleProduct"
+import { Loading } from "../components"
 
 export const router = createBrowserRouter([
   {
@@ -11,24 +11,36 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Suspense fallback={<h1 className="text-primary font-bold text-3xl">Loading...</h1>}> <Home /> </Suspense>,
+        element: <Home />,
       },
       {
         path: "login",
-        element: <Suspense fallback={<h1 className="text-primary font-bold text-3xl">Loading...</h1>}> <Login /> </Suspense>,
+        element: <Suspense fallback={<Loading className={"load-in"} />}> <Login /> </Suspense>,
       },
       {
         path: "signup",
-        element: <Suspense fallback={<h1 className="text-primary font-bold text-3xl">Loading...</h1>}> <Signup /> </Suspense>,
+        element: <Suspense fallback={<Loading className={"load-in"} />}> <Signup /> </Suspense>,
+      },
+      {
+        path: "wishlist",
+        element: <Suspense fallback={<Loading className={"load-in"} />}> <Wishlist /> </Suspense>
+      },
+      {
+        path: "compare",
+        element: <Suspense fallback={<Loading className={"load-in"} />}> <Compare /> </Suspense>
+      },
+      {
+        path: "contact-us",
+        element: <Suspense fallback={<Loading className={"load-in"} />}> <Contact /> </Suspense>
       },
       {
         path: ":id",
-        element: <Suspense fallback={<h1 className="text-primary font-bold text-3xl">Loading...</h1>}> <SignleProduct /> </Suspense>,
+        element: <ProductDetails />,
       },
       {
         path: "*",
-        element: <Suspense fallback={<h1 className="text-primary font-bold text-3xl">Loading...</h1>}> <Notfound /> </Suspense>
-      }
+        element: <Suspense fallback={<Loading className={"load-in"} />}> <Notfound /> </Suspense>
+      },
     ]
   }
 ])

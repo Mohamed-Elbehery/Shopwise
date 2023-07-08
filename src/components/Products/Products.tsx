@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useGetAllProductsQuery } from "../../features/api/productsApi"
 import Product from "./Product";
 
-const Products: React.FC = () => {
+const Products = ({ data }) => {
   const [activeLink, setActiveLink] = useState<string>("women's clothing");
-  const { data, isFetching } = useGetAllProductsQuery('products');
 
-  const handleClick = (event) => {
-    setActiveLink(event.target.innerText);
+  const handleClick = (e) => {
+    setActiveLink(e.target.innerText);
   };
 
   const categories = ["women's clothing", "men's clothing", "jewelery", "electronics"];
@@ -24,10 +22,9 @@ const Products: React.FC = () => {
         }
       })}
       </ul>
-      {isFetching ? <p>Loading...</p> : 
       <div className="products-container grid grid-cols-4 gap-6 mt-12">
         {data?.filter((product) => product.category == activeLink.toLowerCase()).filter((_, index) => index < 4).map((product) => <Product key={product?.id} {...product} />)}
-      </div>}
+      </div>
     </section>
   )
 }

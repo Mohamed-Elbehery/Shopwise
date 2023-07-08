@@ -667,6 +667,15 @@ h1 {
   }
 }
 
+/*! Product Details */
+.product-details {
+  @apply items-start justify-start;
+}
+
+.related-products {
+  @apply flex-col;
+}
+
 /*! Media Queries */
 @media screen and (max-width: 767px) {
   header .container {
@@ -716,4 +725,13 @@ h1 {
   .mobile-number svg {
     display: none;
   }
+}
+
+/* Loading Screen */
+.load-in {
+  @apply min-h-screen bg-white flex items-center justify-center transition-all duration-500 fixed inset-0 opacity-100 z-[1000];
+}
+
+.load-out {
+  @apply min-h-screen bg-white flex items-center justify-center transition-all duration-1000 fixed inset-0 opacity-0 -z-10;
 }
