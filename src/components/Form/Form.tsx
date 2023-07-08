@@ -1,13 +1,17 @@
 import { TiSocialGooglePlus } from 'react-icons/ti';
 import { GrFacebookOption } from 'react-icons/gr';
 import { Link } from "react-router-dom";
+import { useEffect } from 'react';
 
 interface IForm {
   type: "login" | "register";
-
 }
 
 const Form: React.FC<IForm> = ({ type }) => {
+  useEffect(() => {
+    window.scroll({top: 0});
+  })
+
   return (
     <div className="py-[100px] flex items-center justify-center">
       <div className="form-container shadow-[0_0_10px_rgba(0,0,0,0.2)] w-[540px]" onSubmit={(e) => e.preventDefault()}>
