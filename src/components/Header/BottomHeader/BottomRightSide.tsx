@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GoChevronDown } from 'react-icons/go';
 import { TfiSearch } from 'react-icons/tfi';
-import { PiShoppingCartThin } from 'react-icons/pi';
 import { NavLink } from 'react-router-dom';
 import { categories, home_blog_Links, pagesLinks, productsLinks, shopLayout, shop_banner } from '../../../constants';
 import useMenus from '../../../hooks/useMenus';
+import ShoppingCart from '../../ShoppingCart/ShoppingCart';
 
 const BottomRightSide: React.FC = () => {
   const { isHomeMenuHidden, setIsHomeMenuHidden , isPagesMenuHidden, setIsPagesMenuHidden
@@ -106,11 +107,8 @@ const BottomRightSide: React.FC = () => {
       {/* Search Icon */}
       <li className='main_nav-link'><TfiSearch className="w-5 h-5" /></li>
 
-      {/* Shopping Cart Icon */}
-      <li className='main_nav-link relative'>
-        <PiShoppingCartThin className="w-6 h-6" />
-        <span className='cart-length'>2</span>
-      </li>
+      {/* Shopping Cart */}
+      <ShoppingCart />
     </ul>
   )
 }

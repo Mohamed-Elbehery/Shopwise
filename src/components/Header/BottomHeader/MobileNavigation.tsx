@@ -1,9 +1,9 @@
-import { PiShoppingCartThin } from "react-icons/pi"
 import { TfiSearch } from "react-icons/tfi"
 import { IoMenuSharp } from "react-icons/io5"
 import { IoMdClose } from "react-icons/io"
 import { GoChevronDown } from 'react-icons/go';
 import { useState } from "react";
+import ShoppingCart from "../../ShoppingCart/ShoppingCart";
 
 const MobileNavigation: React.FC = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -13,11 +13,8 @@ const MobileNavigation: React.FC = () => {
       {/* Search Icon */}
       <button className='main_nav-link'><TfiSearch className="w-5 h-5" /></button>
 
-      {/* Shopping Cart Icon */}
-      <button className='main_nav-link relative'>
-        <PiShoppingCartThin className="w-6 h-6" />
-        <span className='cart-length'>2</span>
-      </button>
+      {/* Shopping Cart */}
+      <ShoppingCart className="mobile-cart" />
 
       {/* Mobile Navigation */}
       {isMenuOpened 

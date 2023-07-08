@@ -1,10 +1,13 @@
 import { IProduct } from "../../interfaces"
 import { AiFillStar } from 'react-icons/ai'
 import { PiShoppingCart, PiShuffleAngular, PiMagnifyingGlassPlus, PiHeartStraight } from 'react-icons/pi'
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
+import { addToCart, getTotal } from "../../features/slices/cartSlice"
 
-const Product: React.FC<IProduct> = ({ title, price, image, rating, className, id }) => {
+const Product: React.FC<IProduct> = ({ title, price, image, rating, className, id, data }) => {
   const icons = [PiShoppingCart, PiShuffleAngular, PiMagnifyingGlassPlus, PiHeartStraight];
+  const dispatch = useDispatch();
 
   return (
     <div className={`product relative group w-[255px] shadow-md shadow-gray-300 rounded-lg ${className}`}>
@@ -14,7 +17,21 @@ const Product: React.FC<IProduct> = ({ title, price, image, rating, className, i
         {/* Icons */}
         <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center gap-4 z-50">
           {icons.map((Icon, index) => {
-            return <Icon key={index} className={`w-9 h-9 bg-white p-2 hover:text-white hover:bg-primary transition-all duration-300 opacity-0 mt-4 group-hover:opacity-100 group-hover:mt-0 cursor-pointer`} />
+            if(Icon == PiShoppingCart) return (
+              <button key={index}>
+                <Icon onClick={() => {
+                  dispatch(addToCart(data))
+                  dispatch(getTotal())
+                }} className={`w-9 h-9 bg-white p-2 hover:text-white 
+                hover:bg-primary transition-all duration-300 opacity-0 mt-4 group-hover:opacity-100 group-hover:mt-0 cursor-pointer`} />
+              </button>
+            )
+            else return (
+            <button key={index}>
+              <Icon className={`w-9 h-9 bg-white p-2 hover:text-white hover:bg-primary 
+              transition-all duration-300 opacity-0 mt-4 group-hover:opacity-100 group-hover:mt-0 cursor-pointer`} />
+            </button>
+            )
           })}
         </div>
       </div>

@@ -23,7 +23,7 @@ const Products = ({ data }) => {
       })}
       </ul>
       <div className="products-container grid grid-cols-4 gap-6 mt-12">
-        {data?.filter((product) => product.category == activeLink.toLowerCase()).filter((_, index) => index < 4).map((product) => <Product key={product?.id} {...product} />)}
+        {data?.filter((product) => product.category == activeLink.toLowerCase()).filter((_, index) => index < 4).map((product) => <Product key={product?.id} data={product} {...product} />)}
       </div>
     </section>
   )

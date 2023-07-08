@@ -24,6 +24,8 @@ export interface IProduct {
   category: string,
   image: string,
   className?: string,
+  data?: IProduct,
+  quantity?: number,
   rating: {
     rate: number,
     count: number

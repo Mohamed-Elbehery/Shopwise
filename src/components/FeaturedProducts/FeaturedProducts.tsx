@@ -57,8 +57,8 @@ const FeaturedProducts = ({ data }) => {
       <h1 className="mx-auto font-bold text-[32px] text-secondary_dark">Featured Products</h1>
         <div className="products-container mt-12">
         <Slider {...settings}>
-          {data?.filter((product) => product.category.includes('men') || product.category.includes('women') ).filter((_, index) => index < 4).map((product) => <Product className="cursor-grab" key={product?.id} {...product} />)}
-          {data?.filter((product) => product.category.includes('men') || product.category.includes('women') ).filter((_, index) => index < 4).map((product) => <Product className="cursor-grab" key={product?.id+1} {...product} />)}
+          {data?.filter((product) => product.category.includes('men') || product.category.includes('women') ).filter((_, index) => index < 4).map((product) => <Product className="cursor-grab" data={product} key={product?.id} {...product} />)}
+          {data?.filter((product) => product.category.includes('men') || product.category.includes('women') ).filter((_, index) => index < 4).map((product) => <Product className="cursor-grab" data={product} key={product?.id+1} {...product} />)}
         </Slider>
         </div>
     </section>
