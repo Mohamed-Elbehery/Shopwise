@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { PiShoppingCartThin } from "react-icons/pi";
-import { clearItem } from '../../features/slices/cartSlice';
+import { clearItem, getTotal } from '../../features/slices/cartSlice';
 
 const ShoppingCart: React.FC<{className?: string}> = ({ className }) => {
   const [isCartHidden, setIsCartHidden] = useState<boolean>(false);
@@ -27,7 +27,10 @@ const ShoppingCart: React.FC<{className?: string}> = ({ className }) => {
           <div className='ml-1 flex-1 relative'>
             <h3 className='text-[14px] leading-[21px] font-sans font-bold text-secondary_dark line-clamp-1 capitalize mb-2 hover:text-primary transition duration-300 cursor-pointer w-full'>{product?.title}</h3>
             <span className='font-poppins font-medium text-secondary_light text-[16px] lowercase'>{product?.quantity} x {product?.price}</span>
-            <div className="absolute -right-1 pl-1 bg-white top-0 text-black font-bold lowercase cursor-pointer text-base" ><button onClick={() => dispatch(clearItem(product))}>x</button></div>
+            <div className="absolute -right-1 pl-1 bg-white top-0 text-black font-bold lowercase cursor-pointer text-base" ><button onClick={() => {
+              dispatch(clearItem(product))
+              dispatch(getTotal());
+            }}>x</button></div>
           </div>
         </div>
         )}

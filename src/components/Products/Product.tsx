@@ -2,12 +2,13 @@ import { IProduct } from "../../interfaces"
 import { AiFillStar } from 'react-icons/ai'
 import { PiShoppingCart, PiShuffleAngular, PiMagnifyingGlassPlus, PiHeartStraight } from 'react-icons/pi'
 import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { addToCart, getTotal } from "../../features/slices/cartSlice"
 
 const Product: React.FC<IProduct> = ({ title, price, image, rating, className, id, data }) => {
   const icons = [PiShoppingCart, PiShuffleAngular, PiMagnifyingGlassPlus, PiHeartStraight];
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div className={`product relative group w-[255px] shadow-md shadow-gray-300 rounded-lg ${className}`}>
@@ -17,15 +18,21 @@ const Product: React.FC<IProduct> = ({ title, price, image, rating, className, i
         {/* Icons */}
         <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center gap-4 z-50">
           {icons.map((Icon, index) => {
+            // Shopping Cart
             if(Icon == PiShoppingCart) return (
               <button key={index}>
                 <Icon onClick={() => {
-                  dispatch(addToCart(data))
-                  dispatch(getTotal())
+                  if(JSON.parse(localStorage.getItem('user')).isLoggedIn) {
+                    dispatch(addToCart(data));
+                    dispatch(getTotal());
+                  } else {
+                    navigate(`/signup`);
+                  }
                 }} className={`w-9 h-9 bg-white p-2 hover:text-white 
                 hover:bg-primary transition-all duration-300 opacity-0 mt-4 group-hover:opacity-100 group-hover:mt-0 cursor-pointer`} />
               </button>
             )
+            // Rest of Icons
             else return (
             <button key={index}>
               <Icon className={`w-9 h-9 bg-white p-2 hover:text-white hover:bg-primary 
@@ -37,7 +44,7 @@ const Product: React.FC<IProduct> = ({ title, price, image, rating, className, i
       </div>
       <div className="p-3 pr-0">
         {/* Title */}
-        <Link to={`/${id}`} className="font-roboto font-bold text-base line-clamp-1 text-secondary_light cursor-pointer hover:text-primary transition duration-300">{title}</Link>
+        <p onClick={() => {!JSON.parse(localStorage.getItem('user')).isLoggedIn ? navigate(`/signup`) : navigate(`/${id}`)}} className="font-roboto font-bold text-base line-clamp-1 text-secondary_light cursor-pointer hover:text-primary transition duration-300">{title}</p>
         {/* Price */}
         <div className="space-x-2">
           <span className="text-primary text-base font-poppins font-bold">${price}</span>

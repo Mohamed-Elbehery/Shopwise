@@ -1,30 +1,56 @@
 import { TiSocialGooglePlus } from 'react-icons/ti';
 import { GrFacebookOption } from 'react-icons/gr';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 interface IForm {
   type: "login" | "register";
 }
 
+interface IFormData {name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  termsAccepted: boolean
+}
+
 const Form: React.FC<IForm> = ({ type }) => {
+  const navigate = useNavigate();
+  const { register, handleSubmit, reset } = useForm();
+
+  const submitForm = (data: IFormData) => {
+    if(data.password === data.confirmPassword && type == "register") {
+      reset();
+      localStorage.setItem('user', JSON.stringify({...data, isLoggedIn: false}));
+      navigate('/login');
+    }
+    
+    if(type == "login" && data.email == JSON.parse(localStorage.getItem('user')).email && data.password == JSON.parse(localStorage.getItem('user')).password) {
+      localStorage.setItem('user', JSON.stringify({...JSON.parse(localStorage.getItem('user')), isLoggedIn: true}));
+      navigate('/');
+    }
+  };
+
   useEffect(() => {
-    window.scroll({top: 0});
+    window.scroll({ top: 0 });
+    if(JSON.parse(localStorage.getItem('user'))?.isLoggedIn) navigate("/");
   })
 
   return (
     <div className="py-[100px] flex items-center justify-center">
       <div className="form-container shadow-[0_0_10px_rgba(0,0,0,0.2)] w-[540px]" onSubmit={(e) => e.preventDefault()}>
-        <form className="p-[8%] flex flex-col">
+        <form className="p-[8%] flex flex-col" onSubmit={handleSubmit(submitForm)}>
           {/* Normal Log in */}
           <h1 className="font-roboto font-bold text-[28px] text-secondary_dark">{type == "login" ? "Login" : "Create An Account"}</h1>
-          {type == "register" && <input className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mt-4 transition duration-300 focus:border-blue-400" type="text" placeholder="Enter Your Name" />}
-          <input className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md my-4 transition duration-300 focus:border-blue-400" type="email" placeholder="Enter Your Email" />
-          <input className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mb-4 transition duration-300 focus:border-blue-400" type="password" placeholder="Password" />
-          {type == "register" && <input className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mb-4 transition duration-300 focus:border-blue-400" type="password" placeholder="Confirm Password" />}
+          {type == "register" && <input required {...register("name")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mt-4 transition duration-300 focus:border-blue-400" type="text" placeholder="Enter Your Name" />}
+          <input required {...register("email")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md my-4 transition duration-300 focus:border-blue-400" type="email" placeholder="Enter Your Email" />
+          <input required {...register("password")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mb-4 transition duration-300 focus:border-blue-400" type="password" placeholder="Password" />
+          {type == "register" && <input required {...register("confirmPassword")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mb-4 transition duration-300 focus:border-blue-400" type="password" placeholder="Confirm Password" />}
           <div className="check-container flex items-center justify-between">
             <div className="flex items-center gap-2 ml-1">
-              <input type="checkbox" id="remember-checkbox" />
+              {type == "register" && <input required {...register("termsAccepted")} type="checkbox" id="remember-checkbox" />}
+              {type == "login" && <input {...register("remember")} type="checkbox" id="remember-checkbox" />}
               <label htmlFor="remember-checkbox" className="text-grey font-poppins cursor-pointer text-[14px]">{type == "login" ? "Remember me" : "I agree to terms & Policy."}</label>
             </div>
             {type == "login" && <button className="text-grey font-poppins">Forgot password?</button>}

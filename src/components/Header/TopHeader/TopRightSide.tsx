@@ -8,7 +8,7 @@ const RightSide: React.FC = () => {
     <nav className='flex items-center gap-4'>
       <NavLink className="nav-links" to={"compare"}><PiShuffleLight /> Compare</NavLink>
       <NavLink className="nav-links" to={"wishlist"}><IoMdHeartEmpty /> Wishlist</NavLink>
-      <NavLink className="nav-links" to={"login"}><BsPerson /> Login</NavLink>
+      {JSON.parse(localStorage.getItem('user'))?.isLoggedIn ? <span>Hello, <span className='text-primary font-semibold'>{JSON.parse(localStorage.getItem('user')).name}</span></span> : <NavLink className="nav-links" to={"login"}><BsPerson /> Login</NavLink>}
     </nav>
   )
 }
