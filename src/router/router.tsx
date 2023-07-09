@@ -1,6 +1,6 @@
 import App from "../App"
 import { createBrowserRouter } from "react-router-dom"
-import { Compare, Contact, Home, Login, Notfound, ProductDetails, Signup, Wishlist } from "../pages"
+import { Home, Login, Notfound, ProductDetails, Signup } from "../pages"
 import { Suspense } from 'react'
 import { Loading } from "../components"
 
