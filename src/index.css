@@ -46,6 +46,41 @@ header .container {
   @apply flex items-center gap-1 text-sm cursor-pointer;
 }
 
+.bottom-header-hidden {
+  @apply sticky top-[150px] bg-white z-[99999] w-full;
+}
+
+.bottom-header-displayed {
+  @apply fixed bg-white w-full z-[99999];
+  animation-delay: 300ms;
+  animation: slideDown 0.3s ease-in;
+}
+
+@keyframes slideDown {
+  from {
+    top: -70px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+.menu-language-hidden {
+  @apply absolute -left-2 bottom-[-120px] bg-white w-36 border z-40 transition-all duration-300 scale-0 opacity-0 bg-opacity-0 origin-top;
+}
+
+.menu-language-displayed {
+  @apply absolute -left-2 bottom-[-120px] bg-white w-36 border z-40 transition-all duration-300 scale-100 opacity-100 bg-opacity-100 origin-top;
+}
+
+.menu-currency-hidden {
+  @apply absolute bg-white w-12 h-28 -left-[10px] -bottom-[122px] z-50 border flex items-center justify-center flex-col gap-3 transition-all duration-300 opacity-0 scale-0 bg-opacity-0 origin-top;
+}
+
+.menu-currency-displayed {
+  @apply absolute bg-white w-12 h-28 -left-[10px] -bottom-[122px] z-50 border flex items-center justify-center flex-col gap-3 transition-all duration-300 opacity-100 scale-100 bg-opacity-100 origin-top;
+}
+
 .mobile-number {
   @apply flex items-center gap-2 text-sm;
 }
@@ -775,4 +810,17 @@ h1 {
 
 .load-out {
   @apply min-h-screen bg-white flex items-center justify-center transition-all duration-1000 fixed inset-0 opacity-0 -z-10;
+}
+
+.product {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

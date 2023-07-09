@@ -11,21 +11,27 @@ function App() {
     window.scroll({ top: 0 });
   }, [pathname])
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 140) console.log("test");
+    });
+  }, []);
+
   return (
     <>
-      <Header />
       <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
       />
+      <Header />
       <Outlet />
       <Newsletter />
       <Footer />

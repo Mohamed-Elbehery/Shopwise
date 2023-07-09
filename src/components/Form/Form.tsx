@@ -1,8 +1,10 @@
 import { TiSocialGooglePlus } from 'react-icons/ti';
 import { GrFacebookOption } from 'react-icons/gr';
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup';
 
 interface IForm {
   type: "login" | "register";
@@ -19,15 +21,44 @@ interface IFormData {name: string;
 const Form: React.FC<IForm> = ({ type }) => {
   const { pathname } = useParams();
   const navigate = useNavigate();
-  const { register, handleSubmit, reset } = useForm();
+  const [emailLoginError, setEmailLoginError] = useState<string>("");
 
+  // Yup Schema (Validation)
+  const registerSchema = yup.object().shape({
+    name: yup.string().required("Please Enter Your Name"),
+    email: yup.string().email("Please Enter a Valid Email").required(),
+    password: yup.string().min(8).max(20).required(),
+    confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords Don't Match").required(),
+    termsAccepted: yup.boolean().required(),
+    rememberMe: yup.boolean().notRequired(),
+  })
+
+  const loginSchema = yup.object().shape({
+    name: yup.string().notRequired(),
+    email: yup.string().email("Please Enter a Valid Email").required(),
+    password: yup.string().min(8).max(20).required(),
+    confirmPassword: yup.string().oneOf([yup.ref("password"), null]).notRequired(),
+    termsAccepted: yup.boolean().notRequired(),
+    rememberMe: yup.boolean().notRequired(),
+  })
+  
+  // React Hook Form
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+    resolver: yupResolver(type == "register" ? registerSchema : loginSchema)
+  });
+
+  // On Submit
   const submitForm = (data: IFormData) => {
     if(data.password === data.confirmPassword && type == "register") {
       reset();
       localStorage.setItem('user', JSON.stringify({...data, isLoggedIn: false}));
       navigate('/login');
-    }
+    }    
     
+    if(type == "login") {
+      if(data.email != JSON.parse(localStorage.getItem('user')).email || data.password != JSON.parse(localStorage.getItem('user')).password) setEmailLoginError("Wrong Email or Password");
+    }
+
     if(type == "login" && data.email == JSON.parse(localStorage.getItem('user')).email && data.password == JSON.parse(localStorage.getItem('user')).password) {
       localStorage.setItem('user', JSON.stringify({...JSON.parse(localStorage.getItem('user')), isLoggedIn: true, rememberMe: data?.rememberMe}));
 
@@ -49,10 +80,24 @@ const Form: React.FC<IForm> = ({ type }) => {
         <form className="p-[8%] flex flex-col" onSubmit={handleSubmit(submitForm)}>
           {/* Normal Log in */}
           <h1 className="font-roboto font-bold text-[28px] text-secondary_dark">{type == "login" ? "Login" : "Create An Account"}</h1>
+
+          {/* Name Input */}
           {type == "register" && <input required {...register("name")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mt-4 transition duration-300 focus:border-blue-400" type="text" placeholder="Enter Your Name" />}
-          <input required {...register("email")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md my-4 transition duration-300 focus:border-blue-400" type="email" placeholder="Enter Your Email" />
-          <input required {...register("password")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mb-4 transition duration-300 focus:border-blue-400" type="password" placeholder="Password" />
-          {type == "register" && <input required {...register("confirmPassword")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mb-4 transition duration-300 focus:border-blue-400" type="password" placeholder="Confirm Password" />}
+          <p className='text-primary capitalize mt-2'>{errors?.name?.message}</p>
+
+          {/* Email Input */}
+          <input required {...register("email")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md my-4 mb-2 transition duration-300 focus:border-blue-400" type="text" placeholder="Enter Your Email" />
+          <p className='text-primary mb-2 capitalize'>{errors?.email?.message}</p>
+
+          {/* Password Input */}
+          <input required {...register("password")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mb-2 transition duration-300 focus:border-blue-400" type="password" placeholder="Password" />
+          <p className='text-primary mb-2 capitalize'>{errors?.password?.message}</p>
+
+          {/* Confirm Password Input */}
+          {type == "register" && <input required {...register("confirmPassword")} className="outline-none border border-gray-300 p-3 placeholder:text-grey placeholder:font-poppins rounded-md mb-2 transition duration-300 focus:border-blue-400" type="password" placeholder="Confirm Password" />}
+          {type == "register" && <p className='text-primary mb-4 capitalize'>{errors?.confirmPassword?.message}</p>}
+          {type == "login" && <p className='text-primary mb-4 capitalize'>{emailLoginError}</p>}
+
           <div className="check-container flex items-center justify-between">
             <div className="flex items-center gap-2 ml-1">
               {type == "register" && <input required {...register("termsAccepted")} type="checkbox" id="remember-checkbox" />}

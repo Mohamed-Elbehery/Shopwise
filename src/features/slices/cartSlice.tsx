@@ -14,6 +14,7 @@ const cartSlice = createSlice({
   initialState,
   name: "cart",
   reducers: {
+    //! Add
     addToCart: (state, action) => {
       const itemIndex = state.cartItems.findIndex((item) => item?.id == action.payload?.id);
 
@@ -36,13 +37,15 @@ const cartSlice = createSlice({
         theme: "light",
       });
     },
+
+    //! Clear
     clearItem: (state, action) => {
       const newCart = state.cartItems.filter((product) => product?.id !== action.payload?.id);
       state.cartItems = newCart;
 
       localStorage.setItem('cart', JSON.stringify(state.cartItems));
 
-      toast.success('Deleted from The Cart', {
+      toast.error('Deleted from The Cart', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -53,12 +56,14 @@ const cartSlice = createSlice({
         theme: "light",
       });
     },
+
+    //! Get Total Price
     getTotal: (state) => {
       const { total } = state.cartItems.reduce((cartTotal, cartItem) => {
         const { price, quantity } = cartItem;
         cartTotal.total += +price * +quantity;
 
-        return cartTotal
+        return cartTotal;
       }, {
         total: 0
       })

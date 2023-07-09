@@ -21,18 +21,18 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <Suspense fallback={<Loading className={"load-in"} />}> <Signup /> </Suspense>,
       },
-      {
-        path: "wishlist",
-        element: <Suspense fallback={<Loading className={"load-in"} />}> <Wishlist /> </Suspense>
-      },
-      {
-        path: "compare",
-        element: <Suspense fallback={<Loading className={"load-in"} />}> <Compare /> </Suspense>
-      },
-      {
-        path: "contact-us",
-        element: <Suspense fallback={<Loading className={"load-in"} />}> <Contact /> </Suspense>
-      },
+      // {
+      //   path: "wishlist",
+      //   element: <Suspense fallback={<Loading className={"load-in"} />}> <Wishlist /> </Suspense>
+      // },
+      // {
+      //   path: "compare",
+      //   element: <Suspense fallback={<Loading className={"load-in"} />}> <Compare /> </Suspense>
+      // },
+      // {
+      //   path: "contact-us",
+      //   element: <Suspense fallback={<Loading className={"load-in"} />}> <Contact /> </Suspense>
+      // },
       {
         path: ":id",
         element: <ProductDetails />,

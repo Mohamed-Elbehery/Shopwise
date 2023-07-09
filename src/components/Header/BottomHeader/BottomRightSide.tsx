@@ -102,7 +102,7 @@ const BottomRightSide: React.FC = () => {
       </li>
 
       {/* Contact Us */}
-      <li><NavLink className='main_nav-link font-medium' to="/contact-us">Contact Us</NavLink></li>
+      <li><button className='main_nav-link font-medium'>Contact Us</button></li>
       
       {/* Search Icon */}
       <li className='main_nav-link'><TfiSearch className="w-5 h-5" /></li>
