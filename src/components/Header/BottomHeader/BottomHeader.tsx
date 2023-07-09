@@ -4,7 +4,7 @@ import MobileNavigation from "./MobileNavigation"
 
 const BottomHeader: React.FC = () => {
   return (
-    <div className="container bottom-container py-[34px] sticky z-[999]">
+    <div className="container bottom-container py-[34px] relative">
       {/* Left Side */}
       <BottomLeftSide />
       {/* Right Side */}

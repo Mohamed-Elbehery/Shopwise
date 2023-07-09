@@ -13,7 +13,7 @@ const Header: React.FC = () => {
         setIsScrollButtonHiden(true);
         headerRef.current.classList = ['bottom-header-displayed'];
       } else {
-        headerRef.current.classList = ['bottom-header-hidden'];
+        headerRef.current.classList = [];
         setIsScrollButtonHiden(false);
       }
     });
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
       {/* Top Header */}
       <TopHeader /> 
       {/* Bottom Header */}
-      <div ref={headerRef} className='bottom-header-hidden transition-all duration-500'>
+      <div ref={headerRef} className='transition-all duration-500'>
         <BottomHeader />
       </div>
       {scrollButtonHidden && <ScrollToTopButton />}

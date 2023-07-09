@@ -46,12 +46,8 @@ header .container {
   @apply flex items-center gap-1 text-sm cursor-pointer;
 }
 
-.bottom-header-hidden {
-  @apply sticky top-[150px] bg-white z-[99999] w-full;
-}
-
 .bottom-header-displayed {
-  @apply fixed bg-white w-full z-[99999];
+  @apply fixed bg-white w-full z-[1000] shadow-md;
   animation-delay: 300ms;
   animation: slideDown 0.3s ease-in;
 }
