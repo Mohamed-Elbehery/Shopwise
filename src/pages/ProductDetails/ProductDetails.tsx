@@ -33,7 +33,7 @@ const ProductDetails: React.FC = () => {
 
   useEffect(() => {
     window.scroll({ top: 0 });
-  })
+  }, [])
 
   const settings = {
     dots: true,

@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from 'react-toastify';
 
-if(!JSON.parse(localStorage.getItem('user'))) {
-  localStorage.clear();
-}
-
 const initialState = {
   cartItems: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
   cartTotalPrice: localStorage.getItem('total') ? JSON.parse(localStorage.getItem('total')) : 0

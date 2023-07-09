@@ -11,12 +11,6 @@ function App() {
     window.scroll({ top: 0 });
   }, [pathname])
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if(window.scrollY > 140) console.log("test");
-    });
-  }, []);
-
   return (
     <>
       <ToastContainer

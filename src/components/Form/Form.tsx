@@ -56,10 +56,10 @@ const Form: React.FC<IForm> = ({ type }) => {
     }    
     
     if(type == "login") {
-      if(data.email != JSON.parse(localStorage.getItem('user')).email || data.password != JSON.parse(localStorage.getItem('user')).password) setEmailLoginError("Wrong Email or Password");
+      if(data.email != JSON.parse(localStorage.getItem('user'))?.email || data.password != JSON.parse(localStorage.getItem('user'))?.password) setEmailLoginError("Wrong Email or Password");
     }
 
-    if(type == "login" && data.email == JSON.parse(localStorage.getItem('user')).email && data.password == JSON.parse(localStorage.getItem('user')).password) {
+    if(type == "login" && data.email == JSON.parse(localStorage.getItem('user'))?.email && data.password == JSON.parse(localStorage.getItem('user'))?.password) {
       localStorage.setItem('user', JSON.stringify({...JSON.parse(localStorage.getItem('user')), isLoggedIn: true, rememberMe: data?.rememberMe}));
 
       setTimeout(() => {
