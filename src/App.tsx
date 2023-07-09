@@ -26,8 +26,6 @@ function App() {
       pauseOnHover
       theme="light"
       />
-      {/* Same as */}
-      <ToastContainer />
       <Outlet />
       <Newsletter />
       <Footer />

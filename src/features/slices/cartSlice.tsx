@@ -36,12 +36,12 @@ const cartSlice = createSlice({
         theme: "light",
       });
     },
-
     clearItem: (state, action) => {
       const newCart = state.cartItems.filter((product) => product?.id !== action.payload?.id);
       state.cartItems = newCart;
 
       localStorage.setItem('cart', JSON.stringify(state.cartItems));
+
       toast.success('Deleted from The Cart', {
         position: "top-right",
         autoClose: 5000,

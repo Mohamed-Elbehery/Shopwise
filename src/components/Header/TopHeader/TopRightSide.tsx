@@ -15,8 +15,8 @@ const RightSide: React.FC = () => {
     <nav className='flex items-center gap-4'>
       <NavLink className="nav-links" to={"compare"}><PiShuffleLight /> Compare</NavLink>
       <NavLink className="nav-links" to={"wishlist"}><IoMdHeartEmpty /> Wishlist</NavLink>
-      {JSON.parse(localStorage.getItem('user'))?.isLoggedIn ? <span className='text-[14px]'>Hello, <span className='text-primary font-semibold'>{JSON.parse(localStorage.getItem('user')).name}</span></span> : <NavLink className="nav-links" to={"login"}><BsPerson /> Login</NavLink>}
-      {JSON.parse(localStorage.getItem('user'))?.isLoggedIn && <span onClick={handleClick} className='font-bold text-[13px] hover:text-primary cursor-pointer'>Signout</span>}
+      {JSON.parse(localStorage.getItem('user'))?.isLoggedIn ? <span className='text-[14px]'>Hello, <span className='text-primary font-semibold capitalize'>{JSON.parse(localStorage.getItem('user')).name}</span></span> : <NavLink className="nav-links" to={"login"}><BsPerson /> Login</NavLink>}
+      {JSON.parse(localStorage.getItem('user'))?.isLoggedIn && <span onClick={handleClick} className='font-bold text-[14px] hover:text-primary cursor-pointer'>Signout</span>}
     </nav>
   )
 }
