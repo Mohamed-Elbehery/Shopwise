@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useRef, useState } from 'react';
 import { GoChevronDown } from 'react-icons/go';
 import { TfiSearch } from 'react-icons/tfi';
 import { NavLink } from 'react-router-dom';
@@ -10,6 +11,25 @@ const BottomRightSide: React.FC = () => {
   const { isHomeMenuHidden, setIsHomeMenuHidden , isPagesMenuHidden, setIsPagesMenuHidden
     , isProductsMenuHidden, setIsProductsMenuHidden, isBlogMenuHidden, setIsBlogMenuHidden
     , isShopMenuHidden, setIsShopMenuHidden } = useMenus();
+
+  const [searchIcon, setSearchIcon] = useState<boolean>(false);
+  const searchIconRef = useRef(null);
+  const iconRef = useRef(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      console.log(e.target.classList.value);
+      
+      if(e.target.classList.value == "search-container-displayed") setSearchIcon(false);
+    }
+
+    document.addEventListener('click', handler);
+
+    return () => {
+      document.removeEventListener('click', handler, false);
+      document.removeEventListener('click', handler, true);
+    }
+  }, []);
 
   return (
     <ul className='bottom-header'>
@@ -105,7 +125,17 @@ const BottomRightSide: React.FC = () => {
       <li><button className='main_nav-link font-medium'>Contact Us</button></li>
       
       {/* Search Icon */}
-      <li className='main_nav-link'><TfiSearch className="w-5 h-5" /></li>
+      <li onClick={() => setSearchIcon(true)} className='main_nav-link'>
+        <button>
+          <TfiSearch className="w-5 h-5" />
+        </button>
+        <div className={`${!searchIcon ? "search-container-hidden" : "search-container-displayed"}`}>
+          <input ref={searchIconRef} className='bg-transparent w-[60%] text-white border-b-2 border-white pb-2 outline-none placeholder:text-white' type="text" placeholder='Search' />
+          <TfiSearch ref={iconRef} className="w-5 h-5 cursor-pointer hover:text-primary transition duration-300 text-white -ml-5 mb-3"/>
+        </div>
+        {searchIcon && <div className='fixed opacity-0 left-0 top-0 w-full h-full z-[900] bg-[#000] bg-opacity-70 cursor-auto flex items-center justify-center transition-all duration-500;'>
+        </div>}
+      </li>
 
       {/* Shopping Cart */}
       <ShoppingCart />
