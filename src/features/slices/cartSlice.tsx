@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from 'react-toastify';
 
 if(!JSON.parse(localStorage.getItem('user'))) {
   localStorage.clear();
@@ -23,12 +24,34 @@ const cartSlice = createSlice({
       }
 
       localStorage.setItem('cart', JSON.stringify(state.cartItems));
+
+      toast.success('Added to The Cart', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     },
+
     clearItem: (state, action) => {
       const newCart = state.cartItems.filter((product) => product?.id !== action.payload?.id);
       state.cartItems = newCart;
 
       localStorage.setItem('cart', JSON.stringify(state.cartItems));
+      toast.success('Deleted from The Cart', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     },
     getTotal: (state) => {
       const { total } = state.cartItems.reduce((cartTotal, cartItem) => {

@@ -19,14 +19,14 @@ import "./slick-theme.css";
 import Slider from "react-slick";
 import useSliderArrows from "../../hooks/useSliderArrows";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/slices/cartSlice";
+import { addToCart, getTotal } from "../../features/slices/cartSlice";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams();
   const { data, isFetching } =  useGetProductQuery(`products/${id}`);
   const { data: products } =  useGetAllProductsQuery(`products`);
   const [showMore, setShowMore] = useState<boolean>(false);
-  const [counter, setCounter] = useState<number>(0);
+  const [counter, setCounter] = useState<number>(1);
   const dispatch = useDispatch();
 
   const {NextArrow, PreviousArrow} = useSliderArrows();
@@ -80,7 +80,7 @@ const ProductDetails: React.FC = () => {
       <Location title={"Product Details"} />
       <div className="container product-details max-[767px]:flex-col max-[767px]:items-center max-[767px]:gap-6 pt-[100px] pb-[70px]">
         {/* Image - Left Side */}
-        <div className="w-[522px] h-[580px] max-[1200px]:w-[450px] max-[1023px]:h-[498px] max-[1200px]:w-[330px] max-[1023px]:h-[365px] max-[575px]:h-auto max-[575px]:w-auto border p-[8px]">
+        <div className="w-[522px] h-[580px] max-[1200px]:w-[450px] max-[1023px]:h-[498px] max-[575px]:h-auto max-[575px]:w-auto border p-[8px]">
           <img className="w-full h-full object-contain" src={data?.image} alt={data?.title} />
         </div>
         {/* Details - Right Side */}
@@ -119,7 +119,10 @@ const ProductDetails: React.FC = () => {
               <button className="text-2xl font-medium p-2 bg-gray-200 rounded-full" onClick={() => setCounter(() => counter + 1)}><BsPlus /></button>
             </div>
             <div className="flex items-center space-x-3 max-[767px]:mt-0">
-              <button className="max-[1023px]:ml-0 main-btn rounded ml-4 max-[575px]:text-[14px] max-[575px]:py-[6px]" onClick={() => dispatch(addToCart(data))} >Add To Cart</button>
+              <button className="max-[1023px]:ml-0 main-btn rounded ml-4 max-[575px]:text-[14px] max-[575px]:py-[6px]" onClick={() => {
+                for (let i = 0; i < counter; i++) dispatch(addToCart(data));
+                dispatch(getTotal());
+              }} >Add To Cart</button>
               <button><PiShuffleLight className="w-7 h-7 text-grey hover:text-primary transition duration-300" /></button>
               <button><IoMdHeartEmpty className="w-7 h-7 text-grey hover:text-primary transition duration-300" /></button>
             </div>
