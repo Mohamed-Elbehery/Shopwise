@@ -102,11 +102,15 @@ header .container {
 }
 
 .search-container-hidden {
-  @apply fixed -left-full top-0 w-full h-full z-[999] bg-[#000] bg-opacity-70 cursor-auto flex items-center justify-center transition-all duration-500;
+  @apply fixed -left-full top-0 w-full h-full z-[999] bg-[#000] bg-opacity-70 cursor-auto flex items-center justify-center transition-none duration-500;
 }
 
 .search-container-displayed {
   @apply fixed -left-0 top-0 w-full h-full z-[999] bg-[#000] bg-opacity-70 cursor-auto flex items-center justify-center transition-all duration-500;
+}
+
+.search-container-slide {
+  @apply fixed left-0 top-0 w-full h-full z-[900] bg-[#000] bg-opacity-70 cursor-auto flex items-center transition-transform justify-center duration-500 ease-linear pointer-events-none;
 }
 
 .main_nav-link {
@@ -334,7 +338,6 @@ h1 {
     opacity: 1;
   }
 }
-
 
 .products li {
   @apply text-base text-secondary_dark hover:text-primary hover:underline transition duration-300 cursor-pointer;
