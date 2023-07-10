@@ -2,16 +2,41 @@ import { TfiSearch } from "react-icons/tfi"
 import { IoMenuSharp } from "react-icons/io5"
 import { IoMdClose } from "react-icons/io"
 import { GoChevronDown } from 'react-icons/go';
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ShoppingCart from "../../ShoppingCart/ShoppingCart";
 
 const MobileNavigation: React.FC = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
+  const [searchIcon, setSearchIcon] = useState<boolean>(false);
+  const searchIconRef = useRef(null);
+  const iconRef = useRef(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      console.log(e.target.classList.value);
+      
+      if(e.target.classList.value == "search-container-displayed") setSearchIcon(false);
+    }
+
+    document.addEventListener('click', handler);
+
+    return () => {
+      document.removeEventListener('click', handler, false);
+      document.removeEventListener('click', handler, true);
+    }
+  }, []);
+
   return (
     <div className="mobile-navigation">
       {/* Search Icon */}
-      <button className='main_nav-link'><TfiSearch className="w-5 h-5" /></button>
+      <button onClick={() => setSearchIcon(true)} className='main_nav-link'>
+        <TfiSearch className="w-5 h-5" />
+          <div className={`${!searchIcon ? "search-container-hidden" : "search-container-displayed"}`}>
+            <input ref={searchIconRef} className='pr-6 bg-transparent w-[60%] text-white border-b-2 border-white pb-2 outline-none placeholder:text-white' type="text" placeholder='Search' />
+            <TfiSearch ref={iconRef} className="w-5 h-5 cursor-pointer hover:text-primary transition duration-300 text-white -ml-5 mb-3"/>
+          </div>
+        </button>
 
       {/* Shopping Cart */}
       <ShoppingCart className="mobile-cart" />
