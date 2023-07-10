@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { PiShoppingCartThin } from "react-icons/pi";
 import { clearItem, getTotal } from '../../features/slices/cartSlice';
+import { RootState } from '../../features/store/store';
 
 const ShoppingCart: React.FC<{className?: string}> = ({ className }) => {
   const [isCartHidden, setIsCartHidden] = useState<boolean>(false);
-  const { cart }: any = useSelector(state => state);
+  const cart: any = useSelector<RootState>(state => state.cart);
   const dispatch = useDispatch();
 
   return (

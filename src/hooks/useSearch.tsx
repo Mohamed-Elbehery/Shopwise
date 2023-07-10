@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const useSearch = () => {
@@ -8,8 +8,6 @@ const useSearch = () => {
   // For Both Desktop and Mobile Navigation
   const [searchIcon, setSearchIcon] = useState<boolean>(false);
   const [slideRightContainer, setSlideRightContainer] = useState<number>(0);
-  const searchIconRef = useRef(null);
-  const iconRef = useRef(null);
 
   useEffect(() => {
     const handler = (e) => {
@@ -27,7 +25,7 @@ const useSearch = () => {
     }
   }, []);
 
-  return { searchIcon, setSearchIcon, searchIconRef, iconRef, isMenuOpened, setIsMenuOpened, slideRightContainer, setSlideRightContainer };
+  return { searchIcon, setSearchIcon, isMenuOpened, setIsMenuOpened, slideRightContainer, setSlideRightContainer };
 }
 
 export default useSearch

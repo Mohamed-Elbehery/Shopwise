@@ -6,7 +6,7 @@ import ShoppingCart from "../../ShoppingCart/ShoppingCart";
 import useSearch from "../../../hooks/useSearch";
 
 const MobileNavigation: React.FC = () => {
-  const { searchIcon, setSearchIcon, searchIconRef, iconRef, isMenuOpened, setIsMenuOpened, slideRightContainer, setSlideRightContainer } = useSearch();
+  const { searchIcon, setSearchIcon, isMenuOpened, setIsMenuOpened, slideRightContainer, setSlideRightContainer } = useSearch();
 
   return (
     <div className="mobile-navigation">
@@ -17,8 +17,8 @@ const MobileNavigation: React.FC = () => {
       }} className='main_nav-link'>
         <TfiSearch className="w-5 h-5" />
           <div className={`${!searchIcon ? "search-container-hidden" : "search-container-displayed"}`}>
-            <input ref={searchIconRef} className='pr-6 bg-transparent w-[60%] text-white border-b-2 border-white pb-2 outline-none placeholder:text-white' type="text" placeholder='Search' />
-            <TfiSearch ref={iconRef} className="w-5 h-5 cursor-pointer hover:text-primary transition duration-300 text-white -ml-5 mb-3"/>
+            <input className='pr-6 bg-transparent w-[60%] text-white border-b-2 border-white pb-2 outline-none placeholder:text-white' type="text" placeholder='Search' />
+            <TfiSearch className="w-5 h-5 cursor-pointer hover:text-primary transition duration-300 text-white -ml-5 mb-3"/>
           </div>
           <div className={`search-container-slide ${slideRightContainer == 2 ? "translate-x-full transition-all" : "opacity-0"}`}></div>
         </button>

@@ -12,7 +12,7 @@ const BottomRightSide: React.FC = () => {
     , isProductsMenuHidden, setIsProductsMenuHidden, isBlogMenuHidden, setIsBlogMenuHidden
     , isShopMenuHidden, setIsShopMenuHidden } = useMenus();
 
-    const { searchIcon, setSearchIcon, searchIconRef, iconRef, slideRightContainer, setSlideRightContainer } = useSearch();
+    const { searchIcon, setSearchIcon, slideRightContainer, setSlideRightContainer } = useSearch();
 
   return (
     <ul className='bottom-header'>
@@ -116,8 +116,8 @@ const BottomRightSide: React.FC = () => {
           <TfiSearch className="w-5 h-5" />
         </button>
         <div className={`${!searchIcon ? "search-container-hidden" : "search-container-displayed"}`}>
-          <input ref={searchIconRef} className='bg-transparent w-[60%] text-white border-b-2 border-white pb-2 outline-none placeholder:text-white' type="text" placeholder='Search' />
-          <TfiSearch ref={iconRef} className="w-5 h-5 cursor-pointer hover:text-primary transition duration-300 text-white -ml-5 mb-3"/>
+          <input className='bg-transparent w-[60%] text-white border-b-2 border-white pb-2 outline-none placeholder:text-white' type="text" placeholder='Search' />
+          <TfiSearch className="w-5 h-5 cursor-pointer hover:text-primary transition duration-300 text-white -ml-5 mb-3"/>
         </div>
         <div className={`search-container-slide ${slideRightContainer == 2 ? "translate-x-full transition-all" : "opacity-0"}`}></div>
       </li>
