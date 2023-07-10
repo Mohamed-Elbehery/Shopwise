@@ -39,7 +39,7 @@ const Product: React.FC<IProduct> = ({ title, price, image, rating, className, i
       </div>
       <div className="p-3 pr-0">
         {/* Title */}
-        <Link to={`${id}`} className="font-roboto font-bold text-base line-clamp-1 text-secondary_light cursor-pointer hover:text-primary transition duration-300">{title}</Link>
+        <Link to={`/${id}`} className="font-roboto font-bold text-base line-clamp-1 text-secondary_light cursor-pointer hover:text-primary transition duration-300">{title}</Link>
         {/* Price */}
         <div className="space-x-2">
           <span className="text-primary text-base font-poppins font-bold">${price}</span>

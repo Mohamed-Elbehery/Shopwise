@@ -1,6 +1,10 @@
-import { Link, useParams } from "react-router-dom"
+import Product from "../../components/Products/Product";
+import { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom"
 import { useGetAllProductsQuery, useGetProductQuery } from "../../features/api/productsApi"
+import { addToCart, getTotal } from "../../features/slices/cartSlice";
 import { Loading, Location } from "../../components";
+import useSliderArrows from "../../hooks/useSliderArrows";
 import { AiFillStar, AiOutlineYoutube } from "react-icons/ai";
 import { HiOutlineShieldCheck } from "react-icons/hi";
 import { FaRotate } from "react-icons/fa6";
@@ -11,18 +15,15 @@ import { PiShuffleLight } from 'react-icons/pi';
 import { IoMdHeartEmpty } from 'react-icons/io';
 import { GrFacebookOption, GrTwitter } from 'react-icons/gr';
 import { TiSocialGooglePlus, TiSocialInstagram } from 'react-icons/ti';
-import { useState, useEffect } from "react";
-import Product from "../../components/Products/Product";
+import { useDispatch } from "react-redux";
 // React Slick CSS
 import "./slick.css"; 
 import "./slick-theme.css";
 import Slider from "react-slick";
-import useSliderArrows from "../../hooks/useSliderArrows";
-import { useDispatch } from "react-redux";
-import { addToCart, getTotal } from "../../features/slices/cartSlice";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams();
+  const { pathname } = useLocation();
   const { data, isFetching } =  useGetProductQuery(`products/${id}`);
   const { data: products } =  useGetAllProductsQuery(`products`);
   const [showMore, setShowMore] = useState<boolean>(false);
@@ -32,8 +33,9 @@ const ProductDetails: React.FC = () => {
   const {NextArrow, PreviousArrow} = useSliderArrows();
 
   useEffect(() => {
-    window.scroll({ top: 0 });
-  }, [])
+    window.scroll({ top: 0, behavior: "smooth" });
+
+  }, [pathname])
 
   const settings = {
     dots: true,
@@ -86,7 +88,7 @@ const ProductDetails: React.FC = () => {
         {/* Details - Right Side */}
         <div className="details pt-0 pr-0 pb-3 pl-8 flex-1 max-[575px]:pl-0">
           {/* Title */}
-          <Link to={`${id}`} className="max-[1200px]:text-[22px] max-[767px]:text-[20px] max-[480px]:text-[18px] font-roboto font-medium text-[24px] leading-[29px] text-secondary_light cursor-pointer hover:text-primary transition duration-300">{data?.title}</Link>
+          <p className="max-[1200px]:text-[22px] max-[767px]:text-[20px] max-[480px]:text-[18px] font-roboto font-medium text-[24px] leading-[29px] text-secondary_light">{data?.title}</p>
           <div className="mt-2 flex items-center justify-between max-[500px]:flex-wrap">
             <div className="space-x-2 font-poppins">
               {/* Price */}
