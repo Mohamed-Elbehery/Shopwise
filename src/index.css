@@ -763,10 +763,6 @@ h1 {
   @apply after:bg-secondary_dark before:bg-secondary_dark border-secondary_dark hover:text-secondary_dark rounded;
 }
 
-.cart-products {
-  @apply h-[220px] overflow-y-scroll;
-}
-
 .cart-products::-webkit-scrollbar-track {
   @apply bg-gray-500 bg-opacity-70;
 }
