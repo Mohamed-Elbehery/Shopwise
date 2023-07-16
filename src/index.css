@@ -37,6 +37,23 @@
   }
 }
 
+/** Custom Scroll Bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary bg-opacity-60;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-opacity-100;
+}
+
 /*! Header */
 header .container {
   @apply h-12;
@@ -744,6 +761,14 @@ h1 {
 
 .cart-btn {
   @apply after:bg-secondary_dark before:bg-secondary_dark border-secondary_dark hover:text-secondary_dark rounded;
+}
+
+.cart-products {
+  @apply h-[220px] overflow-y-scroll;
+}
+
+.cart-products::-webkit-scrollbar-track {
+  @apply bg-gray-500 bg-opacity-70;
 }
 
 .cart .cart-btns button {
