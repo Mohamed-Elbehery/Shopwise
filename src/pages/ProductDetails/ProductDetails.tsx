@@ -50,7 +50,6 @@ const ProductDetails: React.FC = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: false,
           initialSlide: 0,
         }
       },
@@ -59,7 +58,6 @@ const ProductDetails: React.FC = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: false,
           initialSlide: 0,
         }
       },
@@ -69,7 +67,7 @@ const ProductDetails: React.FC = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           dots: true,
-          infinite: false,
+          infinite: true,
           initialSlide: 0,
         }
       }
